@@ -4,18 +4,20 @@ export const StyledHeroImage = styled.div`
   background: ${props =>
     `linear-gradient(
       to bottom, rgba(0,0,0,0)
-      39%,rgba(0,0,0,0)
-      41%,rgba(0,0,0,0.65)
+      39%, rgba(0,0,0,0)
+      41%, rgba(0,0,0,0.55)
       100%
     ),
-    url('${props.image}'), #1c1c1c`};
+    url('${props.image}'), #1c1c1c
+  `};
+    
   background-size: 100%, cover !important;
   background-position: center, center !important;
   width: 100%;
   height: 600px;
   position: relative;
   animation: animateHeroimage 1s;
-
+    
   .heroimage-content {
     max-width: 1280px;
     padding: 20px;
@@ -29,7 +31,7 @@ export const StyledHeroImage = styled.div`
     bottom: 40px;
     margin-right: 20px;
     min-height: 100px;
-    background: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0); /* if highlighting needed */
     color: #fff;
 
     h1 {
@@ -39,7 +41,6 @@ export const StyledHeroImage = styled.div`
 
       @media screen and (max-width: 720px) {
         font-size: 38px;
-        color: #fff;
       }
     }
 
@@ -52,7 +53,6 @@ export const StyledHeroImage = styled.div`
       @media screen and (max-width: 720px) {
         font-size: 16px;
         line-height: 20px;
-        color: #fff;
       }
     }
 

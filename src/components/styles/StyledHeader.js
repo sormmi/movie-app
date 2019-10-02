@@ -31,12 +31,12 @@ export const StyledRMDBLogo = styled.img`
 
 export const StyledTMDBLogo = styled.img`
   width: 122px;
-  margin-top: 25px;
+  margin-top: 20px;
   float: right;
 
   @media screen and (max-width: 500px) {
     display: inline-block;
     width: 80px;
-    margin-top: 0px;
+    margin-top: 5px;
   }
 `;

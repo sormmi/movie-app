@@ -1,53 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import HeroImage from "./layout/HeroImage";
 import SearcBar from "./layout/SearchBar";
 import Grid from "./layout/Grid";
 import MovieThumb from "./layout/MovieThumb";
 import LoadMoreButton from "./layout/LoadMoreButton";
 import Spinner from "./layout/Spinner";
-import { API_URL, API_KEY, IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config';
+import {useHomeFetch} from "./hooks/useHomeFetch";
+import {BACKDROP_SIZE, IMAGE_BASE_URL, POSTER_SIZE} from "../config";
+
+import NoImage from './images/no_image.jpg';
 
 const Home = () => {
-    const [state, setState] = useState({ movies: [] });
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
 
-    const fetchMovies = async endpoint => {
-        setLoading(true);
-        setError(false);
+    const [{state, loading, error}, fetchMovies] = useHomeFetch();
+    const [searchTerm, setSearchTerm] = useState('');
 
-        try {
-            const result = await (await fetch(endpoint)).json();
-
-            console.log(result);
-
-            setState(prev => ({
-                ...prev,
-                movies: [...result.results],
-                heroImage: prev.heroImage || result.results[0],
-                currentPage: result.page,
-                totalPages: result.total_pages
-            }));
-
-        } catch (error) {
-            setError(true);
-            console.log(error);
-        }
-
-        setLoading(false);
-    };
-
-    useEffect(() => {
-        fetchMovies(`${API_URL}movie/popular?api_key=${API_KEY}`)
-    }, []);
+    if (error) return <div>Oops something went wrong :(</div>
+    if (!state.movies[0]) return <Spinner/>
 
     return (
         <>
-            <HeroImage/>
+            <HeroImage
+                image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.heroImage.backdrop_path}`}
+                title={state.heroImage.original_title}
+                text={state.heroImage.overview}
+            />
+
             <SearcBar/>
-            <Grid/>
-            <MovieThumb/>
-            <Spinner/>
+
+            <Grid header={searchTerm ? 'Search Results' : 'Popular Movies'}>
+
+                {state.movies.map(movie => (
+                    <MovieThumb
+                        key={movie.id}
+                        clickable
+                        image={movie.poster_path
+                            ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+                            : NoImage
+                        }
+                        movieId={movie.id}
+                        movieName={movie.original_title}
+                    />
+                ))}
+
+            </Grid>
+
             <LoadMoreButton/>
         </>
     );
