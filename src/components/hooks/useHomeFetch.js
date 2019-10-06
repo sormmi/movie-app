@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { POPULAR_BASE_URL } from '../../config';
+import { POPULAR_BASE_URL } from '../../configuration';
 
 export const useHomeFetch = (searchTerm) => {
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { API_URL, API_KEY } from '../../config';
+import { API_URL, API_KEY } from '../../configuration';
 
 export const useMovieFetch = movieId => {
 

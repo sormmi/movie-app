@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {StyledMovieInfo} from "../styles/StyledMovieInfo";
 import NoImage from '../images/no_image.jpg';
 import MovieThumb from "./MovieThumb";
-import {IMAGE_BASE_URL, POSTER_SIZE} from "../../config";
+import {IMAGE_BASE_URL, POSTER_SIZE} from "../../configuration";
 
 const MovieInfo = ({ movie }) => (
     <StyledMovieInfo backdrop={movie.backdrop_path}>

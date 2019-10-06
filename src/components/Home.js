@@ -6,7 +6,7 @@ import MovieThumb from "./layout/MovieThumb";
 import LoadMoreButton from "./layout/LoadMoreButton";
 import Spinner from "./layout/Spinner";
 import {useHomeFetch} from "./hooks/useHomeFetch";
-import {POPULAR_BASE_URL, SEARCH_BASE_URL, BACKDROP_SIZE, IMAGE_BASE_URL, POSTER_SIZE} from "../config";
+import {POPULAR_BASE_URL, SEARCH_BASE_URL, BACKDROP_SIZE, IMAGE_BASE_URL, POSTER_SIZE} from "../configuration";
 
 import NoImage from './images/no_image.jpg';
 
