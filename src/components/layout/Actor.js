@@ -9,7 +9,7 @@ const Actor = ({ actor }) => (
         <img src={
             actor.profile_path
                 ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-                : <NoImage />
+                : NoImage
             } alt={actor.name}
         />
         <span className="actor-name">{actor.name}</span>
